@@ -10,5 +10,5 @@ public interface NewsDao {
     void add(News news);
 
     //get allNewsObjects
-    List<News> getNewsObject();
+    List<News> getAllNews();
 }
