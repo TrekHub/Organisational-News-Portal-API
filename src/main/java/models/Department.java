@@ -8,6 +8,7 @@ public class Department {
     private int employeeNo;
 
 
+
     public Department(String departName, String departDesc, int employeeNo) {
         this.departName = departName;
         this.departDesc = departDesc;

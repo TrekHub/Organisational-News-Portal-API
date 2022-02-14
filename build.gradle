@@ -19,5 +19,6 @@ dependencies {
     implementation 'org.slf4j:slf4j-simple:1.7.21'
     implementation 'org.sql2o:sql2o:1.5.4'
     implementation group: 'com.h2database', name: 'h2', version: '1.4.191'
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.9.0'
     testImplementation group: 'junit', name: 'junit', version: '4.12'
 }
