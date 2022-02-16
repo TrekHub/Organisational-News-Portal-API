@@ -3,6 +3,7 @@ package dao;
 import models.User;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
+import org.sql2o.Sql2oException;
 
 import java.util.List;
 
@@ -23,6 +24,8 @@ public class Sql2oUserDao implements UserDao {
                     .executeUpdate()
                     .getKey();
             user.setId(id);
+        }catch (Sql2oException error){
+            throw  error;
         }
     }
 
@@ -32,6 +35,8 @@ public class Sql2oUserDao implements UserDao {
         try (Connection con = sql2o.open()) {
             return con.createQuery(sql)
                     .executeAndFetch(User.class);
+        }catch (Sql2oException error){
+            throw  error;
         }
     }
 
@@ -42,6 +47,8 @@ public class Sql2oUserDao implements UserDao {
             return con.createQuery(sql)
                     .addParameter("id", id)
                     .executeAndFetchFirst(User.class);
+        }catch (Sql2oException error){
+            throw  error;
         }
 
     }
@@ -53,6 +60,8 @@ public class Sql2oUserDao implements UserDao {
             return con.createQuery(sql)
                     .addParameter("departId", departId)
                     .executeAndFetch(User.class);
+        }catch (Sql2oException error){
+            throw  error;
         }
 
     }

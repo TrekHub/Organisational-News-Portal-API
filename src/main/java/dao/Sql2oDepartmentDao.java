@@ -28,8 +28,8 @@ public class Sql2oDepartmentDao implements  DepartmentDao{
             department.setId(id);
 
 
-        }catch (Sql2oException err){
-            System.out.println("Did not add the object to db " + err);
+        }catch (Sql2oException error){
+            throw  error;
         }
     }
 
@@ -41,6 +41,8 @@ public class Sql2oDepartmentDao implements  DepartmentDao{
         try(Connection con = sql2o.open()){
             return  con.createQuery(sql)
                     .executeAndFetch(Department.class);
+        }catch (Sql2oException error){
+            throw  error;
         }
     }
 
@@ -51,6 +53,8 @@ public class Sql2oDepartmentDao implements  DepartmentDao{
           return  con.createQuery(sql)
                     .addParameter("id", id)
                     .executeAndFetchFirst(Department.class);
+        }catch (Sql2oException error){
+            throw  error;
         }
     }
 }

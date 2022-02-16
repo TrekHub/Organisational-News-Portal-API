@@ -3,6 +3,8 @@ package dao;
 import models.News;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
+import org.sql2o.Sql2oException;
+
 import java.util.List;
 
 public class Sql2oNewsDao implements  NewsDao {
@@ -23,6 +25,8 @@ public class Sql2oNewsDao implements  NewsDao {
                     .executeUpdate()
                     .getKey();
             news.setId(id);
+        }catch (Sql2oException error){
+            throw  error;
         }
     }
 
@@ -33,6 +37,8 @@ public class Sql2oNewsDao implements  NewsDao {
         try(Connection con = sql2o.open()){
             return  con.createQuery(sql)
                     .executeAndFetch(News.class);
+        }catch (Sql2oException error){
+            throw  error;
         }
     }
 
@@ -43,6 +49,8 @@ public class Sql2oNewsDao implements  NewsDao {
             return  con.createQuery(sql)
                     .addParameter("id", id)
                     .executeAndFetchFirst(News.class);
+        }catch (Sql2oException error){
+            throw  error;
         }
 
     }
@@ -56,6 +64,8 @@ public class Sql2oNewsDao implements  NewsDao {
             return  con.createQuery(sql)
                     .addParameter("departId", departId)
                     .executeAndFetch(News.class);
+        }catch (Sql2oException error){
+            throw  error;
         }
 
     }
