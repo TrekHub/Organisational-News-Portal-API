@@ -41,9 +41,14 @@ public class App {
             return
                     "<div style=\"text-align: center;\">" +
                             "<h2 >Hello Hacker</h2>" +
-                            "<p>Kindly Interact with the Api Using The base url provided below here" +
                             "<br>" +
+                            "<p>Kindly Interact with the Api Using The base url provided below here</p>" +
+
                             "<a href=\"url\">https://newsapited.herokuapp.com/</a>" +
+                            "<br>" +
+                            "<p>Refer to the documentation provided for Endpoint reference</p>" +
+                            "<a href=\"url\">https://github.com/TrekHub/Organisational-News-Portal-API/blob/master/README.md</a>" +
+                            "<br>" +
                             "</div>";
         });
 
