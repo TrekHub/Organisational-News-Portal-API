@@ -14,3 +14,21 @@
         
 </div>
 <br>
+
+
+
+
+
+
+<p>Changes the jobs quantity on page for the <em>active</em> user (the API user).</p>
+
+```
+POST /account/jobsQuantityOnPage
+```
+
+### Parameters - `Request Body Parameters`
+
+| Name     | Type       | Description                           |
+|----------|------------|---------------------------------------|
+| quantity | `Number` | <p>The new value.</p> |
+| quantity | `Number` | <p>The new value.</p> |
