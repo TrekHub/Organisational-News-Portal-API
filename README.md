@@ -15,11 +15,15 @@
 </div>
 <br>
 
-# Organisational Spark Api <span style='font-size:30px;'> <img height="20" class="mx-1" id="logo-img" src="./images/icons/shop-solid.svg" alt=""></span> 
+># Organisational Spark Api <span style='font-size:30px;'> <img height="20" class="mx-1" id="logo-img" src="./images/icons/shop-solid.svg" alt=""></span> 
+
+<br>
+
 A REST API for querying and retrieving scoped news and information. There should be news/articles/posts that are available to all employees without navigating into any department, and others that are housed/classified within departments
 
+<br>
 
-
+![an Mountains are beautiful!](https://www.browserstack.com/blog/content/images/2020/08/API-Blog-Hero-banner-@2x.png "San Juan Mountains")
 
 >## Api EndPoints &#128273;
 
@@ -168,7 +172,9 @@ GET news/departments/departId
 <br>
 
 
-# Technology Used <span style='font-size:30px;'>&#128187;</span> 
+>## Technology Used <span style='font-size:30px;'>&#128187;</span> 
+
+<br>
 
 1. Java
 
@@ -178,11 +184,17 @@ GET news/departments/departId
 
 3. HandleBars
 
+<br>
 
-
-# Author <span style='font-size:30px;'>&#128524;</span> 
+>## Author <span style='font-size:30px;'>&#128524;</span> 
+<br>
 
 Teddy Omondi 
 
-# License  <span style='font-size:30px;'>🔐</span> 
+<br>
+
+>## License  <span style='font-size:30px;'>🔐</span> 
+
+<br>
+
 [MIT](https://choosealicense.com/licenses/mit/)
