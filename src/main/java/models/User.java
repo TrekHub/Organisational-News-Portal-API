@@ -7,13 +7,24 @@ public class User {
     private String position;
     private String role;
     private String department;
+    private int departId;
 
-    public User(String name, String position, String role, String department) {
+
+    public User(String name, String position, String role, String department, int departId) {
         this.name = name;
         this.position = position;
         this.role = role;
         this.department = department;
         this.id = id;
+        this.departId = departId;
+    }
+
+    public int getDepartId() {
+        return departId;
+    }
+
+    public void setDepartId(int departId) {
+        this.departId = departId;
     }
 
     public int getId() {

@@ -21,6 +21,7 @@ public class Sql2oDepartmentDao implements  DepartmentDao{
 
         try(Connection con = sql2o.open()){
             int id = (int) con.createQuery(sql, true)
+                    .throwOnMappingFailure(false)
                     .bind(department)
                     .executeUpdate()
                     .getKey();
@@ -40,6 +41,16 @@ public class Sql2oDepartmentDao implements  DepartmentDao{
         try(Connection con = sql2o.open()){
             return  con.createQuery(sql)
                     .executeAndFetch(Department.class);
+        }
+    }
+
+    @Override
+    public Department findById(int id){
+        String sql = "SELECT * FROM departments WHERE  id = :id";
+        try(Connection con = sql2o.open()){
+          return  con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Department.class);
         }
     }
 }

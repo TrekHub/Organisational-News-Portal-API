@@ -10,4 +10,7 @@ public interface DepartmentDao {
 
     //get
     List<Department> getAllDeparts();
+
+    //get by id
+    Department findById(int id);
 }

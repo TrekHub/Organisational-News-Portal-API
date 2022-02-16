@@ -4,11 +4,21 @@ public class News {
     private int id;
     private String title;
     private String content;
+    private int departId;
 
-    public News(String title, String content) {
+    public News(String title, String content, int departId) {
         this.title = title;
         this.content = content;
+        this.departId = departId;
         this.id = id;
+    }
+
+    public int getDepartId() {
+        return departId;
+    }
+
+    public void setDepartId(int departId) {
+        this.departId = departId;
     }
 
     public int getId() {
