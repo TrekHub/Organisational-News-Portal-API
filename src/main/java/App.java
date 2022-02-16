@@ -23,8 +23,11 @@ public class App {
         port(getHerokuAssignedPort());
         staticFileLocation("/public");
 
-        String connectmetodatabase = "jdbc:postgresql://localhost:5432/news_api";
-        Sql2o sql2o = new Sql2o(connectmetodatabase, "postgres", "Cosmo1088%");
+//        String connectmetodatabase = "jdbc:postgresql://localhost:5432/news_api";
+//        Sql2o sql2o = new Sql2o(connectmetodatabase, "postgres", "Cosmo1088%");
+
+        String connectionString = "jdbc:postgresql://ec2-54-235-108-217.compute-1.amazonaws.com/depfaq7dad9vjq?sslmode=require"; //!
+        Sql2o sql2o = new Sql2o(connectionString, "zndrpnkpeihnzo", "9f4ca03e298af7259ec1fccc87564351deb7f61c4a70ad6e10487dc9066a6de7"); //!
 
 
         Sql2oDepartmentDao sql2oDepartmentDao = new Sql2oDepartmentDao(sql2o);
