@@ -69,6 +69,20 @@ public class App {
            return  gson.toJson(sql2oUserDao.getAllUsers());
         });
 
+        //Get USers by id;
+        get("/users/:id", (req, res) -> {
+            res.type("application/json");
+            int userId = Integer.parseInt(req.params("id"));
+            return gson.toJson(sql2oUserDao.findById(userId));
+        });
+
+
+        //Get USers by department;
+        get("/users/departments/:departId", (req, res) -> {
+            res.type("application/json");
+            int departId = Integer.parseInt(req.params("departId"));
+            return gson.toJson(sql2oUserDao.findUsersByDepart(departId));
+        });
 
 
 
@@ -88,6 +102,21 @@ public class App {
         get("/news", (req, res) -> {
             res.type("application/json");
             return gson.toJson(sql2oNewsDao.getAllNews());
+        });
+
+        //Get News by id;
+        get("/news/:id", (req, res) -> {
+            res.type("application/json");
+            int newsId = Integer.parseInt(req.params("id"));
+            return gson.toJson(sql2oNewsDao.findById(newsId));
+        });
+
+
+        //Get News by department;
+        get("/news/departments/:departId", (req, res) -> {
+            res.type("application/json");
+            int departId = Integer.parseInt(req.params("departId"));
+            return gson.toJson(sql2oNewsDao.findNewsByDepart(departId));
         });
 
 

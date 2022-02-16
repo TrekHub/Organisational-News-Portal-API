@@ -11,4 +11,10 @@ public interface NewsDao {
 
     //get allNewsObjects
     List<News> getAllNews();
+
+    //get news by Id
+    News findById(int id);
+
+    //get news by depart
+    List<News> findNewsByDepart(int departId);
 }
