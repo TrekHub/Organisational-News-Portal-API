@@ -15,9 +15,9 @@ public class Sql2oUserDao implements UserDao {
     }
 
     @Override
-    public  void add(User user){
+    public void add(User user) {
         String sql = "INSERT INTO users (name, position, role, department, departId) VALUES (:name, :position, :role, :department, :departId)";
-        try(Connection con = sql2o.open()){
+        try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql, true)
 
                     .bind(user)
@@ -28,11 +28,36 @@ public class Sql2oUserDao implements UserDao {
     }
 
     @Override
-    public List<User> getAllUsers(){
+    public List<User> getAllUsers() {
         String sql = "SELECT * FROM users";
-        try(Connection con = sql2o.open()){
-            return  con.createQuery(sql)
+        try (Connection con = sql2o.open()) {
+            return con.createQuery(sql)
                     .executeAndFetch(User.class);
         }
     }
+
+    @Override
+    public User findById(int id) {
+        String sql = "SELECT * FROM users WHERE id = :id";
+        try (Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(User.class);
+        }
+
+    }
+
+    @Override
+    public List<User> findUsersByDepart(int departId) {
+        String sql = "SELECT * FROM users WHERE departId = :departId";
+        try (Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .addParameter("departId", departId)
+                    .executeAndFetch(User.class);
+        }
+
+    }
+
+
 }
+

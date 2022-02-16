@@ -38,6 +38,20 @@ public class App {
             return gson.toJson(department);
         });
 
+        //Get all Departments
+        get("/departments", (request, response) -> {
+            response.type("application/json");
+            return gson.toJson(sql2oDepartmentDao.getAllDeparts());
+        });
+
+        //Get departments by id;
+        get("/departments/:id", (req, res) -> {
+            res.type("application/json");
+            int departId = Integer.parseInt(req.params("id"));
+            return gson.toJson(sql2oDepartmentDao.findById(departId));
+        });
+
+
 
         //Create new USer
         post("/users/new", (request, response) -> {
@@ -49,6 +63,16 @@ public class App {
             return gson.toJson(user);
         });
 
+        //Get all Users
+        get("/users", (req, res) -> {
+           res.type("application/json");
+           return  gson.toJson(sql2oUserDao.getAllUsers());
+        });
+
+
+
+
+
 
         //Create News
         post("/news/new", (request, response) -> {
@@ -58,31 +82,6 @@ public class App {
             response.type("application/json");
 
             return gson.toJson(news);
-        });
-
-        //Get all Departments
-        get("/departments", (request, response) -> {
-            response.type("application/json");
-            return gson.toJson(sql2oDepartmentDao.getAllDeparts());
-        });
-
-        //Get all Users
-        get("/users", (req, res) -> {
-           res.type("application/json");
-           return  gson.toJson(sql2oUserDao.getAllUsers());
-        });
-        //Get departments by id;
-        get("/departments/:id", (req, res) -> {
-            res.type("application/json");
-            int departId = Integer.parseInt(req.params("id"));
-            return gson.toJson(sql2oDepartmentDao.findById(departId));
-        });
-
-
-        //Get all users
-        get("/users", (request, response) -> {
-            response.type("application/json");
-            return gson.toJson(sql2oUserDao.getAllUsers());
         });
 
         //Get all news
