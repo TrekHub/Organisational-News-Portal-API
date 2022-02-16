@@ -26,7 +26,7 @@ public class App {
 //        String connectmetodatabase = "jdbc:postgresql://localhost:5432/news_api";
 //        Sql2o sql2o = new Sql2o(connectmetodatabase, "postgres", "Cosmo1088%");
 
-        String connectionString = "jdbc:postgresql://ec2-54-235-108-217.compute-1.amazonaws.com/depfaq7dad9vjq?sslmode=require"; //!
+        String connectionString = "jdbc:postgresql://ec2-54-235-108-217.compute-1.amazonaws.com:5432/depfaq7dad9vjq?sslmode=require"; //!
         Sql2o sql2o = new Sql2o(connectionString, "zndrpnkpeihnzo", "9f4ca03e298af7259ec1fccc87564351deb7f61c4a70ad6e10487dc9066a6de7"); //!
 
 
@@ -36,11 +36,15 @@ public class App {
         Gson gson = new Gson();
 
 
-
-
         //Root Route
         get("/", (request, response) -> {
-            return "Hello Ted";
+            return
+                    "<div style=\"text-align: center;\">" +
+                            "<h2 >Hello Hacker</h2>" +
+                            "<p>Kindly Interact with the Api Using The base url provided below here" +
+                            "<br>" +
+                            "<a href=\"url\">https://newsapited.herokuapp.com/</a>" +
+                            "</div>";
         });
 
 
@@ -67,7 +71,6 @@ public class App {
         });
 
 
-
         //Create new USer
         post("/users/new", (request, response) -> {
             User user = gson.fromJson(request.body(), User.class);
@@ -80,8 +83,8 @@ public class App {
 
         //Get all Users
         get("/users", (req, res) -> {
-           res.type("application/json");
-           return  gson.toJson(sql2oUserDao.getAllUsers());
+            res.type("application/json");
+            return gson.toJson(sql2oUserDao.getAllUsers());
         });
 
         //Get USers by id;
@@ -98,9 +101,6 @@ public class App {
             int departId = Integer.parseInt(req.params("departId"));
             return gson.toJson(sql2oUserDao.findUsersByDepart(departId));
         });
-
-
-
 
 
         //Create News
