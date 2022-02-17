@@ -1,6 +1,5 @@
 import com.google.gson.Gson;
 import dao.*;
-import exceptions.ApiException;
 import models.Department;
 import models.News;
 import models.User;
@@ -37,10 +36,9 @@ public class App {
         Gson gson = new Gson();
 
 
-        //FILTERS
-        after((req, res) -> {
-            res.type("application/json");
-        });
+
+
+
 
 
         //Root Route
@@ -62,11 +60,9 @@ public class App {
 
         //Add new Departments
         post("/departments/new", (request, response) -> {
-
             Department department = gson.fromJson(request.body(), Department.class);
             sql2oDepartmentDao.add(department);
             response.status(201);
-
             return gson.toJson(department);
         });
 
@@ -78,8 +74,6 @@ public class App {
         //Get departments by id;
         get("/departments/:id", (req, res) -> {
             int departId = Integer.parseInt(req.params("id"));
-
-
             return gson.toJson(sql2oDepartmentDao.findById(departId));
         });
 
@@ -123,13 +117,11 @@ public class App {
 
         //Get all news
         get("/news", (req, res) -> {
-
             return gson.toJson(sql2oNewsDao.getAllNews());
         });
 
         //Get News by id;
         get("/news/:id", (req, res) -> {
-
             int newsId = Integer.parseInt(req.params("id"));
             return gson.toJson(sql2oNewsDao.findById(newsId));
         });
@@ -137,11 +129,15 @@ public class App {
 
         //Get News by department;
         get("/news/departments/:departId", (req, res) -> {
-
             int departId = Integer.parseInt(req.params("departId"));
             return gson.toJson(sql2oNewsDao.findNewsByDepart(departId));
         });
 
+
+        //FILTERS
+        after((req, res) ->{
+            res.type("application/json");
+        });
 
 
 
