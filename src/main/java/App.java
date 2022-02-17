@@ -1,5 +1,6 @@
 import com.google.gson.Gson;
 import dao.*;
+import exceptions.ApiException;
 import models.Department;
 import models.News;
 import models.User;
@@ -61,9 +62,11 @@ public class App {
 
         //Add new Departments
         post("/departments/new", (request, response) -> {
+
             Department department = gson.fromJson(request.body(), Department.class);
             sql2oDepartmentDao.add(department);
             response.status(201);
+
             return gson.toJson(department);
         });
 
@@ -75,6 +78,8 @@ public class App {
         //Get departments by id;
         get("/departments/:id", (req, res) -> {
             int departId = Integer.parseInt(req.params("id"));
+
+
             return gson.toJson(sql2oDepartmentDao.findById(departId));
         });
 
