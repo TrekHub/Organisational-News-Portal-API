@@ -36,6 +36,12 @@ public class App {
         Gson gson = new Gson();
 
 
+        //FILTERS
+        after((req, res) -> {
+            res.type("application/json");
+        });
+
+
         //Root Route
         get("/", (request, response) -> {
             return
@@ -58,19 +64,16 @@ public class App {
             Department department = gson.fromJson(request.body(), Department.class);
             sql2oDepartmentDao.add(department);
             response.status(201);
-            response.type("application/json");
             return gson.toJson(department);
         });
 
         //Get all Departments
         get("/departments", (request, response) -> {
-            response.type("application/json");
             return gson.toJson(sql2oDepartmentDao.getAllDeparts());
         });
 
         //Get departments by id;
         get("/departments/:id", (req, res) -> {
-            res.type("application/json");
             int departId = Integer.parseInt(req.params("id"));
             return gson.toJson(sql2oDepartmentDao.findById(departId));
         });
@@ -81,20 +84,16 @@ public class App {
             User user = gson.fromJson(request.body(), User.class);
             sql2oUserDao.add(user);
             response.status(201);
-            response.type("application/json");
-
             return gson.toJson(user);
         });
 
         //Get all Users
         get("/users", (req, res) -> {
-            res.type("application/json");
             return gson.toJson(sql2oUserDao.getAllUsers());
         });
 
         //Get USers by id;
         get("/users/:id", (req, res) -> {
-            res.type("application/json");
             int userId = Integer.parseInt(req.params("id"));
             return gson.toJson(sql2oUserDao.findById(userId));
         });
@@ -102,7 +101,6 @@ public class App {
 
         //Get USers by department;
         get("/users/departments/:departId", (req, res) -> {
-            res.type("application/json");
             int departId = Integer.parseInt(req.params("departId"));
             return gson.toJson(sql2oUserDao.findUsersByDepart(departId));
         });
@@ -113,20 +111,20 @@ public class App {
             News news = gson.fromJson(request.body(), News.class);
             sql2oNewsDao.add(news);
             response.status(201);
-            response.type("application/json");
+
 
             return gson.toJson(news);
         });
 
         //Get all news
         get("/news", (req, res) -> {
-            res.type("application/json");
+
             return gson.toJson(sql2oNewsDao.getAllNews());
         });
 
         //Get News by id;
         get("/news/:id", (req, res) -> {
-            res.type("application/json");
+
             int newsId = Integer.parseInt(req.params("id"));
             return gson.toJson(sql2oNewsDao.findById(newsId));
         });
@@ -134,10 +132,13 @@ public class App {
 
         //Get News by department;
         get("/news/departments/:departId", (req, res) -> {
-            res.type("application/json");
+
             int departId = Integer.parseInt(req.params("departId"));
             return gson.toJson(sql2oNewsDao.findNewsByDepart(departId));
         });
+
+
+
 
 
     }

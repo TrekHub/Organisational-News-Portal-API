@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="models.UserTest" time="0.007" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="models.UserTest" time="0.003" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.13+8-Ubuntu-0ubuntu1.21.10"/>
@@ -60,7 +60,7 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="models.UserTest" name="user_InstantiateWithName_True" time="0.007"/>
+  <testcase classname="models.UserTest" name="user_InstantiateWithName_True" time="0.003"/>
   <testcase classname="models.UserTest" name="user_InstantiateCorrectly_True" time="0"/>
   <testcase classname="models.UserTest" name="user_InstantiateWithDepartId_True" time="0"/>
   <testcase classname="models.UserTest" name="user_InstantiateWithDepart_True" time="0"/>
